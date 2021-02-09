@@ -1,0 +1,12 @@
+steps:
+  - name: 'gcr.io/cloud-builders/git'
+    entrypoint: bash
+    args: [ './clone.sh', $_SOURCE_REPO, 'nodejs12' ]
+
+  - name: node
+    entrypoint: bash
+    args: [ './build.sh', 'nodejs12' ]
+
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: bash
+    args: [ './build-push-image.sh', 'nodejs12', $_PROJECT, $_MS, $_BRANCH ]
