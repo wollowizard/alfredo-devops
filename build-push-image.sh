@@ -10,7 +10,8 @@ if test -f "./source/Dockerfile"; then
   DOCKERFILE="./source/Dockerfile"
 fi
 
-IMAGE_NAME="gcr.io/$_PROJECT/$_MS"
+#IMAGE_NAME="gcr.io/$_PROJECT/$_MS"
+IMAGE_NAME="gcr.io/sunrise-devops/$_MS"
 if [ $_BRANCH != master ]; then
   IMAGE_NAME="$IMAGE_NAME/$_BRANCH"
 fi
