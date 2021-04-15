@@ -2,10 +2,10 @@
 echo "----- Start build and push images -----"
 source /workspace/devops_env
 _BRANCH=$1
-DOCKERFILE="./$DEVOPS_ENV_BUILD_TYPE/Dockerfile"
-if test -f "./source/Dockerfile"; then
+DOCKERFILE="workspace/$DEVOPS_ENV_BUILD_TYPE/Dockerfile"
+if test -f "workspace/source/Dockerfile"; then
   echo "---- Using custom docker file from source ----"
-  DOCKERFILE="./source/Dockerfile"
+  DOCKERFILE="workspace/source/Dockerfile"
 fi
 
 #IMAGE_NAME="gcr.io/$_PROJECT/$_MS"
