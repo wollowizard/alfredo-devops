@@ -3,9 +3,9 @@ echo "----- Start build and push images -----"
 source /workspace/devops_env
 _BRANCH=$1
 DOCKERFILE="workspace/$DEVOPS_ENV_BUILD_TYPE/Dockerfile"
-if test -f "workspace/source/Dockerfile"; then
-  echo "---- Using custom docker file from source ----"
-  DOCKERFILE="workspace/source/Dockerfile"
+if test -f "workspace/src/Dockerfile"; then
+  echo "---- Using custom docker file from src ----"
+  DOCKERFILE="workspace/src/Dockerfile"
 fi
 
 #IMAGE_NAME="gcr.io/$_PROJECT/$_MS"
@@ -15,12 +15,12 @@ if [ $_BRANCH != master ]; then
 fi
 
 echo "Creating docker image $IMAGE_NAME"
-docker build -t "$IMAGE_NAME" -f $DOCKERFILE source
+docker build -t "$IMAGE_NAME" -f $DOCKERFILE src
 echo "Pushing docker image $IMAGE_NAME"
 docker push "$IMAGE_NAME"
 
 if [ $_BRANCH == master ]; then
-  TAGGED_IMAGE="$IMAGE_NAME:$DEVOPS_ENV_SOURCE_VERSION"
+  TAGGED_IMAGE="$IMAGE_NAME:$DEVOPS_ENV_SRC_VERSION"
   echo "Creating docker image $TAGGED_IMAGE"
   docker tag "$IMAGE_NAME" "$TAGGED_IMAGE"
   echo "Pushing docker image $IMAGE_NAME"

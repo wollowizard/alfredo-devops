@@ -1,16 +1,16 @@
 steps:
   - name: 'gcr.io/cloud-builders/git'
     entrypoint: bash
-    args: [ './clone.sh', $_SOURCE_REPO, $_BRANCH ]
-
-  - name: node:12-slim
-    entrypoint: bash
-    args: [ './build.sh' ]
+    args: [ './clone.sh', $_SRC_REPO, $_BRANCH ]
 
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: bash
-    args: [ './build-push-image.sh', $_BRANCH ]
+    args: [ './launch-build.sh' ]
 
-#  - name: "gcr.io/cloud-builders/gke-deploy"
-#    entrypoint: bash
-#    args: [ './deploy.sh']
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: bash
+    args: [ './image.sh', $_BRANCH ]
+
+  - name: "gcr.io/cloud-builders/gke-deploy"
+    entrypoint: bash
+    args: [ './deploy.sh']
