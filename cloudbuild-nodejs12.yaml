@@ -9,4 +9,4 @@ steps:
 
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: bash
-    args: [ './build-push-image.sh', 'nodejs12', $_PROJECT, $_MS, $_BRANCH ]
+    args: [ './build-push-image.sh', 'nodejs12', $_BRANCH ]
