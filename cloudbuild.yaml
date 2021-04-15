@@ -5,11 +5,11 @@ steps:
 
   - name: node
     entrypoint: bash
-    args: [ './build.sh', 'nodejs12' ]
+    args: [ './build.sh' ]
 
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: bash
-    args: [ './build-push-image.sh', 'nodejs12', $_BRANCH ]
+    args: [ './build-push-image.sh', $_BRANCH ]
 
   - name: "gcr.io/cloud-builders/gke-deploy"
     entrypoint: bash

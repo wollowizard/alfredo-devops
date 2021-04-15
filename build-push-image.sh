@@ -1,9 +1,8 @@
 # https://stackoverflow.com/questions/50755859/pull-and-push-image-to-another-project-using-gcloud-container-builder works as owner
 echo "----- Start build and push images -----"
 source /workspace/devops_env
-TYPE=$1
-_BRANCH=$2
-DOCKERFILE="./$TYPE/Dockerfile"
+_BRANCH=$1
+DOCKERFILE="./$DEVOPS_ENV_BUILD_TYPE/Dockerfile"
 if test -f "./source/Dockerfile"; then
   echo "---- Using custom docker file from source ----"
   DOCKERFILE="./source/Dockerfile"
