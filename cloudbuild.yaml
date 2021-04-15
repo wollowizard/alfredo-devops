@@ -1,7 +1,7 @@
 steps:
   - name: 'gcr.io/cloud-builders/git'
     entrypoint: bash
-    args: [ './clone.sh', $_SOURCE_REPO, 'nodejs12' ]
+    args: [ './clone.sh', $_SOURCE_REPO ]
 
   - name: node
     entrypoint: bash

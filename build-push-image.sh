@@ -1,6 +1,6 @@
 # https://stackoverflow.com/questions/50755859/pull-and-push-image-to-another-project-using-gcloud-container-builder works as owner
 echo "----- Start build and push images -----"
-source /workspace/build_vars
+source /workspace/devops_env
 TYPE=$1
 _BRANCH=$2
 DOCKERFILE="./$TYPE/Dockerfile"
@@ -10,7 +10,7 @@ if test -f "./source/Dockerfile"; then
 fi
 
 #IMAGE_NAME="gcr.io/$_PROJECT/$_MS"
-IMAGE_NAME="gcr.io/sunrise-devops/$BUILD_IMAGE_NAME"
+IMAGE_NAME="gcr.io/sunrise-devops/$DEVOPS_ENV_IMAGE_NAME"
 if [ $_BRANCH != master ]; then
   IMAGE_NAME="$IMAGE_NAME/$_BRANCH"
 fi
@@ -21,7 +21,7 @@ echo "Pushing docker image $IMAGE_NAME"
 docker push "$IMAGE_NAME"
 
 if [ $_BRANCH == master ]; then
-  TAGGED_IMAGE="$IMAGE_NAME:$BUILD_SOURCE_VERSION"
+  TAGGED_IMAGE="$IMAGE_NAME:$DEVOPS_ENV_SOURCE_VERSION"
   echo "Creating docker image $TAGGED_IMAGE"
   docker tag "$IMAGE_NAME" "$TAGGED_IMAGE"
   echo "Pushing docker image $IMAGE_NAME"

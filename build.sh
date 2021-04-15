@@ -1,4 +1,4 @@
-_TYPE=$1
+source /workspace/devops_env
 
 if test -f "./source/build.sh"; then
   echo "---- Starting custom build file ----"
@@ -7,5 +7,5 @@ if test -f "./source/build.sh"; then
 else
   echo "---- Starting default devops build ----"
   cd source
-  eval "../$_TYPE/build.sh"
+  eval "../$DEVOPS_ENV_BUILD_TYPE/build.sh"
 fi
