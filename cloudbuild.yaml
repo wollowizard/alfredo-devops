@@ -14,3 +14,4 @@ steps:
 #  - name: "gcr.io/cloud-builders/gke-deploy"
 #    entrypoint: bash
 #    args: [ './4-deploy.sh']
+tags: [$_SRC_REPO', $_BRANCH]
