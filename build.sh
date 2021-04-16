@@ -1,9 +1,9 @@
 source /workspace/devops_env
-DOCKERFILE_PATH=/workspace/$DEVOPS_ENV_BUILD_TYPE/build
+DOCKERFILE=/workspace/$DEVOPS_ENV_BUILD_TYPE/build/Dockerfile
 
 if test -f "/workspace/src/devops/build/Dockerfile"; then
-  DOCKERFILE_PATH=/workspace/src/build
+  DOCKERFILE=/workspace/src/build/Dockerfile
 fi
 
-docker build -t tmp-builder-image $DOCKERFILE_PATH
-docker run --mount type=bind,source=/workspace,target=/workspace/ tmp-builder-image
+docker build -t tmp-builder-image -f $DOCKERFILE /workspace/src
+docker run --mount type=bind,source=/workspace/src,target=/workspace/src tmp-builder-image
