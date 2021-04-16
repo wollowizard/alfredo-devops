@@ -6,4 +6,4 @@ if test -f "/workspace/src/devops/build/Dockerfile"; then
 fi
 
 docker build -t tmp-builder-image -f $DOCKERFILE /workspace/src
-docker run --mount type=bind,source=/workspace/src,target=/workspace/src tmp-builder-image
+docker run --mount type=bind,source=/workspace/src,target=/workspace/src --workdir=/workspace/src tmp-builder-image
