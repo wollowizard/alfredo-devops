@@ -1,7 +1,7 @@
 steps:
   - name: 'gcr.io/cloud-builders/git'
     entrypoint: bash
-    args: [ './1-clone.sh', $_SRC_REPO, $_BRANCH ]
+    args: [ './1-clone.sh', $_SRC_REPO_URL, $_BRANCH ]
 
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: bash
@@ -14,4 +14,6 @@ steps:
 #  - name: "gcr.io/cloud-builders/gke-deploy"
 #    entrypoint: bash
 #    args: [ './4-deploy.sh']
-tags: [$_SRC_REPO', $_BRANCH]
+tags: [$_SRC_REPO_NAME, $_BRANCH]
+options:
+  substitution_option: 'ALLOW_LOOSE'
