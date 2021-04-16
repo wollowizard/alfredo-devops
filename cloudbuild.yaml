@@ -11,9 +11,9 @@ steps:
     entrypoint: bash
     args: [ './3-image.sh', $_BRANCH ]
 
-#  - name: "gcr.io/cloud-builders/gke-deploy"
-#    entrypoint: bash
-#    args: [ './4-deploy.sh']
+  - name: "gcr.io/cloud-builders/gke-deploy"
+    entrypoint: bash
+    args: [ './4-deploy.sh']
 tags: [$_SRC_REPO_NAME, $_BRANCH]
 options:
   substitution_option: 'ALLOW_LOOSE'
