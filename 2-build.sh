@@ -2,7 +2,7 @@ source /workspace/devops_env
 DOCKERFILE=/workspace/$DEVOPS_ENV_BUILD_TYPE/build/Dockerfile
 
 if test -f "/workspace/src/devops/build/Dockerfile"; then
-  DOCKERFILE=/workspace/src/build/Dockerfile
+  DOCKERFILE=/workspace/src/devops/build/Dockerfile
 fi
 
 docker build -t tmp-builder-image -f $DOCKERFILE /workspace/src
