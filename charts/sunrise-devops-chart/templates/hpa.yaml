@@ -1,7 +1,7 @@
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: {{ .Values.app.name }}-hpa"
+  name: {{ .Values.app.name }}-hpa
   namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Values.app.name }}

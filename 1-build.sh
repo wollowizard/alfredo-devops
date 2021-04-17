@@ -1,3 +1,5 @@
+#!/bin/bash -x
+
 source /workspace/devops_env
 DOCKERFILE=/workspace/$DEVOPS_ENV_BUILD_TYPE/build/Dockerfile
 

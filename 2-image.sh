@@ -1,3 +1,4 @@
+#!/bin/bash -x
 # https://stackoverflow.com/questions/50755859/pull-and-push-image-to-another-project-using-gcloud-container-builder works as owner
 source /workspace/devops_env
 _BRANCH=$1
@@ -27,5 +28,5 @@ fi
 
 
 export DEVOPS_ENV_IMAGE_FULL_NAME=$IMAGE_TO_DEPLOY
-env | grep "^DEVOPS_ENV_" >/workspace/devops_env
+env | grep "^DEVOPS_ENV_" >> /workspace/devops_env
 env | grep "^DEVOPS_ENV_"
