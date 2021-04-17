@@ -1,2 +1,13 @@
+#### BEGIN MUST DEFINE ####
+#namespace: ""
+#app:
+#  name: ""
+#image:
+# fullname: ""
+#### END MUST DEFINE ####
 
+replicaCount: 1
+hpa:
+  minReplicas: 1
+  maxReplicas: 5
 

@@ -10,8 +10,8 @@ spec:
     kind: "Deployment"
     name: {{ .Values.app.name }}
     apiVersion: "apps/v1"
-  minReplicas: 1
-  maxReplicas: 5
+  minReplicas: {{ .Values.hpa.minReplicas }}
+  maxReplicas: {{ .Values.hpa.maxReplicas }}
   metrics:
     - type: "Resource"
       resource:
