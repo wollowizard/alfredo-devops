@@ -1,19 +1,19 @@
 steps:
   - name: 'gcr.io/cloud-builders/git'
     entrypoint: bash
-    args: [ './1-clone.sh', $_SRC_REPO_URL, $_BRANCH ]
+    args: [ './0-clone.sh', $_SRC_REPO_URL, $_BRANCH ]
 
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: bash
-    args: [ './2-build.sh' ]
+    args: [ './1-build.sh' ]
 
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: bash
-    args: [ './3-image.sh', $_BRANCH ]
+    args: [ './2-image.sh', $_BRANCH ]
 
-  - name: "gcr.io/cloud-builders/gke-deploy"
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: bash
-    args: [ './4-deploy.sh']
+    args: [ './3-deploy.sh']
 tags: [$_SRC_REPO_NAME, $_BRANCH]
 options:
   substitution_option: 'ALLOW_LOOSE'

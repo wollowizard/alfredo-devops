@@ -9,7 +9,6 @@ git checkout $_BRANCH
 create_variables "/workspace/src/devops/config.yaml"
 create_variables "/workspace/src/devops/deploy/values.yaml"
 export DEVOPS_ENV_APP_NAME=$app_name
-export DEVOPS_ENV_IMAGE_NAME=$image_name
 export DEVOPS_ENV_BUILD_TYPE=$build_type
 
 source /workspace/version.sh

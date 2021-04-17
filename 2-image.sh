@@ -6,7 +6,7 @@ if test -f "/workspace/src/devops/run/Dockerfile"; then
   DOCKERFILE="/workspace/src/devops/run/Dockerfile"
 fi
 
-IMAGE_NAME="gcr.io/sunrise-devops/$DEVOPS_ENV_IMAGE_NAME"
+IMAGE_NAME="gcr.io/sunrise-devops/$DEVOPS_ENV_APP_NAME"
 if [ $_BRANCH != master ]; then
   IMAGE_NAME="$IMAGE_NAME/$_BRANCH"
 fi
