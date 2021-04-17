@@ -13,7 +13,7 @@ steps:
 
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: bash
-    args: [ './3-deploy.sh']
+    args: [ './3-deploy.sh', $_BRANCH]
 tags: [$_SRC_REPO_NAME, $_BRANCH]
 options:
   substitution_option: 'ALLOW_LOOSE'

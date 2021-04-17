@@ -1,19 +1,19 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: {{ .Values.app.name }}-service
+  name: {{ template "appNameWithBranch" . }}-service
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ .Values.app.name }}
+    app: {{ template "appNameWithBranch" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.app.name }}
+      app: {{ template "appNameWithBranch" . }}
   template:
     metadata:
       labels:
-        app: {{ .Values.app.name }}
+        app: {{ template "appNameWithBranch" . }}
     spec:
       containers:
         - name: {{ .Values.app.name }}
