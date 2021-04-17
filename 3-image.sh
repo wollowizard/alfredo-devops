@@ -14,10 +14,18 @@ fi
 docker build -t "$IMAGE_NAME" -f $DOCKERFILE /workspace/src
 docker push "$IMAGE_NAME"
 
+IMAGE_TO_DEPLOY="$IMAGE_NAME"
+
 if [ $_BRANCH == master ]; then
   TAGGED_IMAGE="$IMAGE_NAME:$DEVOPS_ENV_SRC_VERSION"
+  IMAGE_TO_DEPLOY="$TAGGED_IMAGE"
   echo "Creating docker image $TAGGED_IMAGE"
   docker tag "$IMAGE_NAME" "$TAGGED_IMAGE"
   echo "Pushing docker image $IMAGE_NAME"
   docker push "$TAGGED_IMAGE"
 fi
+
+
+export DEVOPS_ENV_IMAGE_FULL_NAME=$IMAGE_TO_DEPLOY
+env | grep "^DEVOPS_ENV_" >/workspace/devops_env
+env | grep "^DEVOPS_ENV_"
