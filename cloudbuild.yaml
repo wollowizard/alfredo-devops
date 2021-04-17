@@ -1,5 +1,5 @@
 steps:
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  - name: 'gcr.io/cloud-builders/git'
     entrypoint: bash
     args: [ './0-clone.sh', $_SRC_REPO_URL, $_BRANCH ]
 
