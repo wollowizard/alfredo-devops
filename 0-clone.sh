@@ -5,8 +5,7 @@ _BRANCH=$2
 
 source /workspace/utils/yaml.sh
 
-git clone $_SRC_REPO_URL src
-git checkout $_BRANCH
+git clone -b $_BRANCH $_SRC_REPO_URL src
 
 create_variables "/workspace/src/devops/config.yaml"
 create_variables "/workspace/src/devops/deploy/values.yaml"
