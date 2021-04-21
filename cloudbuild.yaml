@@ -5,15 +5,19 @@ steps:
 
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: bash
-    args: [ './1-build.sh' ]
+    args: [ './1-env.sh', $_BRANCH ]
 
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: bash
-    args: [ './2-image.sh', $_BRANCH ]
+    args: [ './2-build.sh' ]
+
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: bash
+    args: [ './3-image.sh' ]
 
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: bash
-    args: [ './3-deploy.sh', $_BRANCH]
-tags: [$_SRC_REPO_NAME, $_BRANCH]
+    args: [ './4-deploy.sh']
+tags: [$_TAG1, $_TAG2]
 options:
   substitution_option: 'ALLOW_LOOSE'

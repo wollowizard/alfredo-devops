@@ -1,14 +1,14 @@
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: {{ template "appNameWithBranch" . }}-hpa
+  name: {{ .Release.Name }}-hpa
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ template "appNameWithBranch" . }}
+    app: {{ .Release.Name }}
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: {{ template "appNameWithBranch" . }}
+    name: {{ .Release.Name }}
     apiVersion: "apps/v1"
   minReplicas: {{ .Values.hpa.minReplicas }}
   maxReplicas: {{ .Values.hpa.maxReplicas }}

@@ -4,3 +4,4 @@ cloud-build-local --write-workspace=/Users/alfredo/Desktop/experiments/alfredo-d
 cloud-build-local  --substitutions=_SRC_REPO_URL=https://github.com/wollowizard/hello-world-service.git,_BRANCH=master --dryrun=false .
 
 gcloud builds submit  --config=cloudbuild.yaml --substitutions=_SRC_REPO_URL=https://github.com/wollowizard/hello-world-service.git,_BRANCH=master .
+gcloud builds submit  --config=cloudbuild.yaml --substitutions=_SRC_REPO_URL=https://github.com/wollowizard/hello-world-service.git,_BRANCH=master,_TAG2=master,_TAG1=hello-world-service .

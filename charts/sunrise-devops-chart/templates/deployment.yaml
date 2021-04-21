@@ -1,20 +1,20 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: {{ template "appNameWithBranch" . }}-service
+  name: {{ .Release.Name }}-service
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ template "appNameWithBranch" . }}
+    app: {{ .Release.Name }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ template "appNameWithBranch" . }}
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ template "appNameWithBranch" . }}
+        app: {{ .Release.Name }}
     spec:
       containers:
-        - name: {{ .Values.app.name }}
+        - name: {{ .Release.Name }}
           image: {{ required "image.fullName not provided" .Values.image.fullName }}
